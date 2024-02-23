@@ -3,12 +3,12 @@ import CartManagerDB from "../dao/dbManager/CartManagerDB.js";
 const  cartManagerDB = new CartManagerDB();
 
 class CartService {
-    static getCarts = ()=> {
-        const carts = cartManagerDB.getCarts();
+    static getCarts = async ()=> {
+        const carts = await cartManagerDB.getCarts();
         return carts
     }
-    static addNewCart = (cart) => {
-        const result = cartManagerDB.addNewCart(cart);
+    static addNewCart = async (cart) => {
+        const result = await cartManagerDB.addNewCart(cart);
         return result;
     }
 }

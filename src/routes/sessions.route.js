@@ -27,9 +27,11 @@ async(req,res)=> {
         first_name: req.user.first_name,
         last_name: req.user.last_name,
         age: req.user.age,
-        email:req.user.email
+        email:req.user.email,
+        role: req.user.role
     }
-    res.send({status: 'success', payload: req.user})
+    // res.send({status: 'success', payload: req.user})
+    res.redirect('/products');
 })
 
 router.get('/faillogin', (req, res) => {
@@ -38,7 +40,7 @@ router.get('/faillogin', (req, res) => {
 router.post('/restartPassword', SessionsController.restartPassword);
 
 router.get('/github', passport.authenticate('github', { scope: ['user:email'] }), async (req, res) => {});
-router.get('/githubcallback', passport.authenticate('github', { failureRedirect: '/login' }), async (req, res) => {
+router.get('/githubcallback', passport.authenticate('github', { failureRedirect: '/products' }), async (req, res) => {
     req.session.user = req.user;
     res.redirect('/');
 });

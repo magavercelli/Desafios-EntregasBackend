@@ -1,7 +1,7 @@
 import {Router} from 'express';
 import ProductManagerDB from '../dao/dbManager/ProductManagerDB.js';
 import CartManagerDB from '../dao/dbManager/CartManagerDB.js';
-import passport from 'passport';
+
 
 
 const router = Router();
@@ -36,15 +36,20 @@ router.get('/', privateAccess, (req,res)=>{
 
 router.get('/', async (req,res) => {
     const products = await productManager.getProducts();
-    res.render('home', {products});
-    
+
+    const user = req.session.user; 
+
+    const full_name = user.first_name + " " + user.last_name; // REVISAR
+
+    // res.render('home', {products});
+    res.render('home', { user: user, full_name: full_name, products: products });
 })
 
 router.get('/realtimeproducts', async (req,res)=> {
     res.render('realtimeproducts');
 })
 
-router.get('/products', passport.authenticate('login'), async (req, res) => { // saco privateAccess 
+router.get('/products', async (req, res) => { // saco privateAccess 
     try {
         const { limit = 10, page = 1, sort = '', query = ''} = req.query;
         const products = await productManager.getProducts(limit, page, sort, query);

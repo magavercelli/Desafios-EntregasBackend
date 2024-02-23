@@ -3,12 +3,12 @@ import ProductManagerDB from "../dao/dbManager/ProductManagerDB.js";
 const productManagerDB = new ProductManagerDB();
 
 class ProductService {
-    static getProducts = ()=> {
-        const product = productManagerDB.getProducts();
+    static getProducts = async ()=> {
+        const product = await productManagerDB.getProducts();
         return product;
     }
-    static addProduct = (product) => {
-        const result =  productManagerDB.addProduct(product);
+    static addProduct = async (product) => {
+        const result =  await productManagerDB.addProduct(product);
         return result;
     }
 };
