@@ -30,7 +30,8 @@ const productSchema = new mongoose.Schema({
     },
     category: {
         type: String,
-        require: true
+        require: true,
+        enum: ['Bedidas sin alcohol', 'Bedidas con alcohol', 'Bedidas Gaseosas']
     }
 });
 

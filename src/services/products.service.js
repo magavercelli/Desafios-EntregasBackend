@@ -1,4 +1,4 @@
-import ProductManagerDB from "../dao/dbManager/ProductManagerDB.js";
+import ProductManagerDB from '../dao/managers/dbManager/ProductManagerDB.js';
 
 const productManagerDB = new ProductManagerDB();
 
