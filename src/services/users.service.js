@@ -21,3 +21,5 @@ class UserService {
         return result;
     }
 }
+
+export {  UserService };

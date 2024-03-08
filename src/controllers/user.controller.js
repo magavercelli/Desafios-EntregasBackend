@@ -1,3 +1,4 @@
+import { UserService } from "../services/users.service.js";
 export const getUsers = async (req,res)=>{
     try {
         res.send({status:"success", payload:"getUsers"})        
